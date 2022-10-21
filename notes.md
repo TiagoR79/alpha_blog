@@ -44,7 +44,13 @@
         - ## Heroku CLI install
             - npm install -g heroku
             - heroku --version
-        - heroku login
+        - ## Heroku deploy
+            - heroku login
+            - heroku create
+            - commit all changes
+            - **git push heroku main**
+            - heroku rename newname
+            - heroku open
 
 
 ---
