@@ -52,7 +52,6 @@
             - heroku rename newname
             - heroku open
 
-
 ---
 
 - Useful Things
