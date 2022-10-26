@@ -73,6 +73,63 @@
                     end
                 end
             ```
+        - check schema.rb to confirm changes
+    - ## Create articles model
+        - create article.rb on app/models/
+        - add code:
+            ```rb
+                class Article < ApplicationRecord
+
+                end
+            ```
+        - open rails console: rails console or rails c
+        - test connection to articles table:
+            - Articles.all
+                - executes a sql query and returns []
+    - ## Create articles using rails console
+        - First method
+            - Article.create(title: "first article", description: "lorem ipsum")
+        - Second method
+            - article = Article.new
+            - article.title = "second article"
+            - article.description = "second description"
+            - article.save
+            - article - to check object
+        - Third method
+            - article = Article.new(title: "third article", description: "lorem ipsum")
+            - article.save
+        - Article.all
+        - exit
+    - ## Rest of CRUD functions
+        - Read:
+            - Article.find(2) - returns article with id 2
+            - Article.last
+            - article = Article.find(2)
+            - Article.find(2).title or Article.last.title or article.title ...
+        - Update:
+            - article.title = "edited second title"
+            - article.save
+        - Delete: 
+            - article.destroy
+		- ## Add constraints to Article model
+			- add to article.rb:
+				`validates :title, presence: true`
+			- rails c
+				- reload!
+				- article = Article.new
+				- article.save
+					- returns false
+				- article.errors.full_messages
+					- returns ["Title can't be blank"]
+			- add `validates :description, presence: true`
+			- articles.rb at this point:
+				```rb
+				class Article < ApplicationRecord
+					validates :title, presence: true, length: { minimum: 6, maximum: 100 }
+					validates :description, presence: true, length: { minimum: 10, maximum: 300 }
+				end
+				```
+               
 
 
 ---
