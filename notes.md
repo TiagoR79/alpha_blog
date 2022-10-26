@@ -129,7 +129,40 @@
 					validates :description, presence: true, length: { minimum: 10, maximum: 300 }
 				end
 				```
-               
+		- ## Show articles
+			- add to routes.rb:
+				- `resources :articles, only: [:show]`
+			- rails routes --expanded
+				- to check routes
+		- ## Build the controller without magic
+			- create articles_controller.rb
+				```rb
+				class ArticlesController < ApplicationController
+					def show
+							
+					end
+				end
+				```
+			- create articles/ on views/
+				- create show.html.erb
+				- to evaluate ruby code on .html.erb
+					- <% [code] %>
+				- to evaluate and run ruby code on .html.erb
+					- <%= [code] %>
+		- ## Debugger
+			- insert 'debugger' in code to stop execution there.
+			- example:
+				```rb
+				class ArticlesController < ApplicationController
+					def show
+						debugger
+						@article = Article.find(params[:id])			
+					end
+				end
+				```
+			- opens a debug console
+			- `params[:id]` to show what param is being received
+
 
 
 ---
