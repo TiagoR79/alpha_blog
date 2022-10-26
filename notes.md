@@ -51,6 +51,29 @@
             - **git push heroku main**
             - heroku rename newname
             - heroku open
+    - ## Rails naming conventions
+        - Model name: article
+        - Article model file name: article.rb
+        - Article model class name: Article
+        - Table name: articles
+    - ## Generate a migration file
+        - rails generate migration create_articles
+        - add `t.string :title` to db\migrate\20221026131032_create_articles.rb
+        - rails db:migrate
+        - to undo the last migration:
+            - rails db:rollback
+        - **to make changes to the database setup we should create a new migration file**
+            - don`t change the existing migration file!!!
+        - rails generate migration add_description_to_articles
+        - change db\migrate\20221026132222_add_description_to_articles.rb to:
+            ```rb
+                class AddDescriptionToArticles < ActiveRecord::Migration[7.0]
+                    def change
+                        add_column :articles, :description, :text 
+                    end
+                end
+            ```
+
 
 ---
 
