@@ -58,7 +58,8 @@
       - heroku --version
 
 - ## Heroku deploy
-
+      - run before deployment:
+        - bundle install --without production
       - heroku login
       - heroku create
       - commit all changes
