@@ -1,12 +1,4 @@
-<% if @article.errors.any? %>
-	<h2>The following errors prevented the article from being updated</h2>
-		<ul>
-			<% @article.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
-		</ul>
-<% end %>
-
+<%= render 'shared/errors', obj: @article %>
 <%# the data: { turbo: false }, solves the above code not displaying - serves via html and not ajax ??%>
 <%= form_with(model: @article, data: { turbo: false }, local: true) do |f| %>
 	<p>
