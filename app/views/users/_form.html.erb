@@ -1,14 +1,6 @@
-<% if @users.errors.any? %>
-	<h2>The following errors prevented the user from being updated</h2>
-		<ul>
-			<% @users.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-			<% end %>
-		</ul>
-<% end %>
-
+<%= render 'shared/errors', obj: @user %>
 <%# the data: { turbo: false }, solves the above code not displaying - serves via html and not ajax ??%>
-<%= form_with(model: @users, data: { turbo: false }, local: true) do |f| %>
+<%= form_with(model: @user, data: { turbo: false }, local: true) do |f| %>
 	<p>
 		<%= f.label :username %><br/>
 		<%= f.text_field :username %>
@@ -21,11 +13,11 @@
     
     <p>
 		<%= f.label :password %><br/>
-		<%= f.text_field :password %>
+		<%= f.password_field :password %>
 	</p>
 
 	<p>
-		<%= f.submit %>
+		<%= f.submit "Sign up" %>
 	</p>
 
 <% end %>
