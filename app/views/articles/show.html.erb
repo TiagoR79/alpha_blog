@@ -1,5 +1,6 @@
 <h1>Showing article details</h1>
 
+<p>Created by <%= link_to @article.user.username, user_path(@article.user) %></p>
 <p><strong>Title: </strong><%= @article.title %></p>
 <p><strong>Description: </strong><%= @article.description %></p>
 <p><strong>Author: </strong><%= link_to @article.user.username, user_path(@article.user) %></p>

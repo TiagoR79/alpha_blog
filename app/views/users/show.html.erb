@@ -4,6 +4,10 @@
     <h1><%= @user.username %> Profile</h1>
 </div>
 
+<div>
+    <%= link_to "Edit Profile", edit_user_path(@user) %>
+</div>
+
 <h2>Articles</h2>
 <% @articles.each do |article| %>
     <div>
