@@ -9,18 +9,7 @@
 </div>
 
 <h2>Articles</h2>
-<% @articles.each do |article| %>
-    <div>
-        <p><%= article.title %></p>
-        <p><%= article.description %></p>
-        <p><%= article.user.username %></p>
-        <div>
-            <a><%= link_to 'Show', article_path(article) %></a> |
-            <a><%= link_to 'Edit', edit_article_path(article) %></a> |
-            <a><%= link_to 'Delete', article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></a>
-        </div>
-        <br/>
-    </div>
-<% end %>
+<%= render 'articles/article' %>
+
 
 <%= link_to 'Create new article', new_article_path %>
