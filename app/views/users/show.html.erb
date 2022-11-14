@@ -14,3 +14,7 @@
 <%= render 'articles/article' %>
 
 <%= link_to 'Create new article', new_article_path %>
+
+<% if logged_in? && @user == current_user %>
+    <%= link_to 'DELETE ACCOUNT', user_path(current_user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+<% end %>
