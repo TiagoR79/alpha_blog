@@ -5,11 +5,12 @@
 </div>
 
 <div>
-    <%= link_to "Edit Profile", edit_user_path(@user) %>
+    <% if logged_in? && @user == current_user %>
+        <%= link_to "Edit Profile", edit_user_path(@user) %>
+    <% end %>
 </div>
 
 <h2>Articles</h2>
 <%= render 'articles/article' %>
-
 
 <%= link_to 'Create new article', new_article_path %>

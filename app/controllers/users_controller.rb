@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
-    before_action :set_user
+    
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
     
     def show
         @articles = User.find(params[:id]).articles
