@@ -203,6 +203,15 @@
   - opens a debug console
   - `params[:id]` to show what param is being received
 
+- ## Admin
+  - Add new column to users table
+    - rails generate migration add_admin_to_users
+    - `add_column :users, :admin, :boolean, default: false`
+    - rails db:migrate
+  - Change permission on DB
+    - user = User.[query]
+    - user.toggle!(:admin)
+    - user.admin? - should return true
 ---
 
 - Useful Things

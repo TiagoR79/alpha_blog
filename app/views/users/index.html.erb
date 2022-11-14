@@ -9,10 +9,12 @@
         <div>
             <a><%= link_to 'View Profile', user %></a>
             <% if logged_in? && user == current_user %> |
-                <a><%= link_to 'Edit User', edit_user_path(user) %></a> | 
+                <a><%= link_to 'Edit User', edit_user_path(user) %></a>
+            <% end %>
+            <% if logged_in? && (user == current_user || current_user.admin?) %> |
                 <a><%= link_to 'Delete User', user_path(user), 
                                                 data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></a>
-            <% end %>
+            <% end %> 
         </div>
     </div>
     <hr>
