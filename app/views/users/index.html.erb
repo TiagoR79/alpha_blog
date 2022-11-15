@@ -1,21 +1,26 @@
-<h1>Users</h1>
+<h1 class="bg-dark text-light text-center p-5 m-0">Users</h1>
 
-<% @users.each do |user| %>
-    <div>
-        <h2><%= link_to user.username, user %></h2>
-        <p><%= user.email %></p>
-        <p><%= pluralize(user.articles.count, "article") %> created</p>
-        <p>Joined <%= time_ago_in_words(user.created_at) %> ago</p>
-        <div>
-            <a><%= link_to 'View Profile', user %></a>
-            <% if logged_in? && user == current_user %> |
-                <a><%= link_to 'Edit User', edit_user_path(user) %></a>
-            <% end %>
-            <% if logged_in? && (user == current_user || current_user.admin?) %> |
-                <a><%= link_to 'Delete User', user_path(user), 
-                                                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></a>
-            <% end %> 
+<div class="container mt-5">
+    <% @users.each do |user| %>
+        <div class="row justify-content-center">
+			<div class="card text-bg-dark mb-5 text-center w-75" style="width: 18rem;">
+                <div class="card-body">
+                    <h3><%= link_to user.username, user, class: "card-title text-info text-decoration-none" %></h3>
+                    <p class="card-text"><%= user.email %></p>
+                    <p><%= pluralize(user.articles.count, "article") %> created</p>
+                    <a><%= link_to 'View Profile', user, class: "btn btn-light" %></a>
+                    <% if logged_in? && user == current_user %>
+                        <a><%= link_to 'Edit User', edit_user_path(user), class: "btn btn-light" %></a>
+                    <% end %>
+                    <% if logged_in? && (user == current_user || current_user.admin?) %>
+                        <a><%= link_to 'Delete User', user_path(user), class: "btn btn-light", 
+                                                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></a>
+                    <% end %> 
+                    <div class="card-footer mt-2 border-info">
+                        <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <hr>
-<% end %>
+    <% end %>
+</div>
