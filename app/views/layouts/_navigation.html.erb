@@ -13,10 +13,10 @@
           <%= link_to 'Bloggers', users_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Articles
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% if logged_in? %>
                 <li><%= link_to 'Create New Article', new_article_path, class: "dropdown-item" %></li>
             <% end %>
