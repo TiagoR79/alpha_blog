@@ -1,7 +1,8 @@
-<h1>Edit article </h1>
+<h1 class="bg-dark text-light text-center p-5 m-0">Edit Article</h1>
 
-<p>Created by <%= link_to @article.user.username, user_path(@article.user) %></p>
-
-<%= render 'form' %>
-
-<%= link_to 'Cancel', articles_path %>
+<div class="container" style="height: 100vh;">
+    <%= render 'form' %>
+    <div class="text-center">
+        <p>Created by <%= link_to @article.user.username, user_path(@article.user), class: "text-info text-decoration-none" %></p>
+    </div>
+</div>

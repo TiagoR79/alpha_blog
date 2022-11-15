@@ -1,18 +1,21 @@
-<h1>Log in</h1>
+<h1 class="bg-dark text-light text-center p-5 m-0">Log in</h1>
 
-<%= form_with(scope: :session, url: login_path, local: true) do |f| %>
-	<p>
-		<%= f.label :email %><br/>
-		<%= f.text_field :email %>
-	</p>
-    
-    <p>
-		<%= f.label :password %><br/>
-		<%= f.password_field :password %>
-	</p>
-
-	<p>
-		<%= f.submit "Log in"  %>
-	</p>
-
-<% end %>
+<div class="container" style="height: 100vh;">
+	<div class="row justify-content-center p-2">
+		<div class="col-10">
+			<%# the data: { turbo: false }, solves the above code not displaying - serves via html and not ajax ??%>
+			<%= form_with(scope: :session, data: { turbo: false }, local: true) do |f| %>
+				<div class="form-group p-2">
+					<%= f.label :email, class: "form-label" %>
+					<%= f.text_field :email, class: "form-control", placeholder: "example@email.com" %>
+				</div>
+				<div class="form-group p-2">
+					<%= f.label :password, class: "form-label" %>
+					<%= f.password_field :password, class: "form-control", placeholder: "password" %>
+				</div>
+				<div class="form-group p-2">
+					<%= f.submit "Log in", class: "btn btn-outline-info" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
