@@ -1,12 +1,16 @@
-<h1>Showing article details</h1>
-
-<p>Created by <%= link_to @article.user.username, user_path(@article.user) %></p>
-<p><strong>Title: </strong><%= @article.title %></p>
-<p><strong>Description: </strong><%= @article.description %></p>
-<p><strong>Author: </strong><%= link_to @article.user.username, user_path(@article.user) %></p>
-
-<% if logged_in? && (@article.user == current_user || current_user.admin?) %>
-	<%= link_to 'Edit', edit_article_path(@article) %>
-    <%= link_to 'Delete', article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-<% end %>
-<%= link_to 'Return to articles listing', articles_path %>
+<div class="" style="height: 100vh;">
+    <div class="row justify-content-center text-center bg-dark p-2">
+        <h1 class="text-light"><%= @article.title %></h1>
+    </div>
+    <div class="row justify-content-center text-center p-2">
+        <p class="text-dark"><%= @article.description %></p>
+    </div>
+    <p>Created by <%= link_to @article.user.username, user_path(@article.user), class: "text-info text-decoration-none" %></p>
+    <div class="bg-dark p-2">
+        <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+            <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-light m-2" %>
+            <%= link_to 'Delete', article_path(@article), class: "btn btn-light m-2", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        <% end %>
+        <%= link_to 'Return to articles listing', articles_path, class: "btn btn-light m-2" %>
+    </div>
+</div>
