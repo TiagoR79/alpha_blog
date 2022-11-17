@@ -3,12 +3,11 @@ class CategoriesController < ApplicationController
     def new
       @category = Category.new  
     end
+
     def index
         
     end
-    def show
-        
-    end
+
     def create
         @category = Category.new(category_params)
         if @category.save
@@ -17,6 +16,10 @@ class CategoriesController < ApplicationController
         else
             render 'new'
         end
+    end
+    
+    def show
+      @category =  Category.find(params[:id])
     end
 
     private
