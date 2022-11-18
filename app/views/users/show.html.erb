@@ -10,8 +10,15 @@
 </div>
 
 
+<div class="container">
+	<%= render 'articles/article' %>
+</div>
 
-<%= render 'articles/article' %>
+<div class="d-flex justify-content-center my-3">
+	<%= link_to "Create a new article", new_article_path, class: "btn btn-outline-info bg-dark" %>
+</div>
+
+
 
 <div class="bg-dark p-2 d-flex justify-content-center">
     <% if logged_in? && @user == current_user %>

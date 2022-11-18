@@ -2,9 +2,15 @@
 <div class="container mt-5">
 	<% @articles.each do |article| %>
 		<div class="row justify-content-center">
-			<div class="card text-bg-dark mb-5 text-center w-75" style="width: 18rem;">
+			<div class="card text-bg-dark my-3 text-center w-75" style="width: 18rem;">
 				<div class="card-body">
 					<h5><%= link_to article.title, article_path(article), class: "card-title text-info text-decoration-none" %></h5>
+					<div>
+						<%# This line of code iterates all available categories and renders the partial _category.html.erb for each one %>
+						<% if article.categories.any? %>
+							<%= render article.categories %>
+						<% end %>
+					</div>
 					<p class="card-text m-3"><%= article.description %></p>
 					<p>Created by <%= link_to article.user.username, user_path(article.user), class: "text-info text-decoration-none"%></p>
 					<% if logged_in? && (article.user == current_user || current_user.admin?) %>

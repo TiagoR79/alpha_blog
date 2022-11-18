@@ -212,6 +212,13 @@
     - user = User.[query]
     - user.toggle!(:admin)
     - user.admin? - should return true
+
+- ## Many_to_many relationship
+	- How to associate in console:
+		- article = Article.last
+		- category = Category.last
+		- category.articles << article
+
 ---
 
 - Useful Things
