@@ -10,6 +10,7 @@
 					<div class="card-body">
 						<h2><%= link_to category.name, category_path(category), class: "card-title text-info text-decoration-none" %></h2>
 						<br>
+						<p><%= pluralize(category.articles.count, "article") %></p>
 						<% if logged_in? && current_user.admin? %>
 							<a><%= link_to 'Edit', edit_category_path(category), class: "btn btn-light btn-sm" %></a>
 							<a><%= link_to 'Delete', category_path(category), class: "btn btn-light btn-sm", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></a>

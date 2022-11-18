@@ -6,6 +6,20 @@ class CategoriesController < ApplicationController
 		@category = Category.new  
 	end
 
+	def edit
+		@category =  Category.find(params[:id])
+	end
+
+	def update
+		@category = Category.find(params[:id])
+		if @category.update(category_params)
+			flash[:notice] = "Category updated successfully"
+			redirect_to @category
+		else
+			render 'edit'
+		end
+	end
+
 	def index
 		@categories =  Category.all
 	end
@@ -22,6 +36,13 @@ class CategoriesController < ApplicationController
 	
 	def show
 		@category =  Category.find(params[:id])
+		@articles = @category.articles
+	end
+
+	def destroy
+		@category =  Category.find(params[:id])
+		@category.destroy
+		redirect_to categories_path
 	end
 
 	private
