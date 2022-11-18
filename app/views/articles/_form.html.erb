@@ -5,15 +5,25 @@
 			<%# the data: { turbo: false }, solves the above code not displaying - serves via html and not ajax ??%>
 			<%= form_with(model: @article, data: { turbo: false }, local: true) do |f| %>
 				<div class="form-group p-2">
-					<%= f.label :title, class: "form-label" %>
-					<%= f.text_field :title, class: "form-control", placeholder: "Title of article" %>
+					<%= f.label :title, class: "form-label h4" %>
+					<%= f.text_field :title, class: "form-control text-muted", placeholder: "Title of article" %>
 				</div>
 				
 				<div class="form-group p-2">
-					<%= f.label :description, class: "form-label" %>
-					<%= f.text_area :description, class: "form-control", placeholder: "Write your toughts" %>
+					<%= f.label :description, class: "form-label h4" %>
+					<%= f.text_area :description, class: "form-control text-muted", placeholder: "Write your toughts" %>
 				</div>
 
+				<div class="form-group p-2">
+					<%= f.label :category, class: "form-label h4" %><br>
+					<%= f.collection_check_boxes :category_ids, Category.order(:id), :id, :name do |b| %>
+						<div class="btn btn-outline-info btn-sm">
+							<%= b.check_box class: "form-check-input" %>
+							<%= b.label class: "form-check-label me-2" %>
+						</div>
+					<% end %>
+				</div>
+				<hr>
 				<div class="form-group p-2">
 					<%= f.submit class: "btn btn-outline-info" %>
 				</div>
